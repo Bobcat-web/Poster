@@ -26,7 +26,7 @@ scene.add (directlight);
 const rgbeloader = new RGBELoader();
 const pmremgenerator = new THREE.PMREMGenerator(renderer);
 pmremgenerator.compileEquirectangularShader();
-rgbeloader.load('/poster/HDRI/kloppenheim_06_puresky_4k.hdr', (hdrmap) => {
+rgbeloader.load('/code/poster/HDRI/kloppenheim_06_puresky_4k.hdr', (hdrmap) => {
     const envMap = pmremgenerator.fromEquirectangular(hdrmap).texture;
     scene.background = envMap;
     scene.environment = envMap;
@@ -36,7 +36,7 @@ rgbeloader.load('/poster/HDRI/kloppenheim_06_puresky_4k.hdr', (hdrmap) => {
 
 const gltfloader = new GLTFLoader();
 let model;
-gltfloader.load('/poster/models/heart.glb', (gltf) => {
+gltfloader.load('/code/poster/models/heart.glb', (gltf) => {
     model = gltf.scene;
     const glassmaterial = new THREE.MeshPhysicalMaterial({
     color:0xffffff,
