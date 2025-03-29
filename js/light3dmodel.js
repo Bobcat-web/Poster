@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
-import {RGBELoader} from "three/examples/jsm/Addons.js";
+// import {RGBELoader} from "three/examples/jsm/Addons.js";
 document.addEventListener('DOMContentLoaded', function (){
 const scene = new THREE.Scene();
 
