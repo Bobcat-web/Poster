@@ -24,7 +24,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 const gltfloader = new GLTFLoader();
 let model;
-gltfloader.load('/code/models/Create_a_3D_model_of__0318103040_texture.glb', (gltf) => {
+gltfloader.load('/poster/models/Create_a_3D_model_of__0318103040_texture.glb', (gltf) => {
     model = gltf.scene;
     const glassmaterial = new THREE.MeshPhysicalMaterial({
         color:0xffffff,
@@ -112,59 +112,58 @@ function init() {
             textMesh.position.y += 0.5; // Смещаем текст немного выше сферы
         });
     }
+   // Функция для обновления геометрии линий
+   function updateLineGeometry(line, spheres) {
+    const points = spheres.map(sphere => [sphere.position.x, sphere.position.y, sphere.position.z]).flat();
+    line.setPositions(points);
+}
 
-    // Функция для обновления геометрии линий
-    function updateLineGeometry(line, spheres) {
-        const points = spheres.map(sphere => [sphere.position.x, sphere.position.y, sphere.position.z]).flat();
-        line.setPositions(points);
-    }
+// Анимация
+function animate() {
+    requestAnimationFrame(animate);
 
-    // Анимация
-    function animate() {
-        requestAnimationFrame(animate);
+    // Обновление позиций сфер и текстовых объектов
+    const time = performance.now() * 0.001; // Время в секундах
+    updateSpheres(spheres, textMeshes, time);
 
-        // Обновление позиций сфер и текстовых объектов
-        const time = performance.now() * 0.001; // Время в секундах
-        updateSpheres(spheres, textMeshes, time);
+    // Обновление геометрии линии
+    updateLineGeometry(lineGeometry, spheres);
 
-        // Обновление геометрии линии
-        updateLineGeometry(lineGeometry, spheres);
+    // Рендеринг сцены
+    renderer.render(scene, camera);
+}
 
-        // Рендеринг сцены
-        renderer.render(scene, camera);
-    }
-
-    // Запуск анимации
-    animate();
+// Запуск анимации
+animate();
 }
 
 // Функция для создания 3D-текста
 function create3DText(text, color = 0xffffff) {
-    const textGeometry = new TextGeometry(text, {
-        font: font,
-        size: 0.2, // Размер текста
-        height: 0.1, // Толщина текста
-    });
+const textGeometry = new TextGeometry(text, {
+    font: font,
+    size: 0.2, // Размер текста
+    height: 0.1, // Толщина текста
+});
 
-    const textMaterial = new THREE.MeshBasicMaterial({ color: color });
-    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-    // Центрируем текст
-    textGeometry.computeBoundingBox();
-    const textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
-    textMesh.position.x = -textWidth / 2; // Центрирование по горизонтали
+const textMaterial = new THREE.MeshBasicMaterial({ color: color });
+const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+// Центрируем текст
+textGeometry.computeBoundingBox();
+const textWidth = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
+textMesh.position.x = -textWidth / 2; // Центрирование по горизонтали
 
-    return textMesh;
+return textMesh;
 }
 
 // Обработчик изменения размера окна
 window.addEventListener('resize', () => {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+const width = window.innerWidth;
+const height = window.innerHeight;
 
-    // Обновление размера рендерера
-    renderer.setSize(width, height);
+// Обновление размера рендерера
+renderer.setSize(width, height);
 
-    // Обновление соотношения сторон камеры
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+// Обновление соотношения сторон камеры
+camera.aspect = width / height;
+camera.updateProjectionMatrix();
 });
