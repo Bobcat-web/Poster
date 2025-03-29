@@ -26,13 +26,13 @@ scene.add (directlight);
 const rgbeloader = new RGBELoader();
 const pmremgenerator = new THREE.PMREMGenerator(renderer);
 pmremgenerator.compileEquirectangularShader();
-rgbeloader.load('../HDRI/kloppenheim_06_puresky_4k.hdr', (hdrmap) => {
-    const envMap = pmremgenerator.fromEquirectangular(hdrmap).texture;
-    scene.background = envMap;
-    scene.environment = envMap;
-    hdrmap.dispose();
-    pmremgenerator.dispose();
-})
+// rgbeloader.load('../HDRI/kloppenheim_06_puresky_4k.hdr', (hdrmap) => {
+//     const envMap = pmremgenerator.fromEquirectangular(hdrmap).texture;
+//     scene.background = envMap;
+//     scene.environment = envMap;
+//     hdrmap.dispose();
+//     pmremgenerator.dispose();
+// })
 
 const gltfloader = new GLTFLoader();
 let model;
