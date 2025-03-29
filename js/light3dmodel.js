@@ -36,7 +36,7 @@ rgbeloader.load('/code/poster/HDRI/kloppenheim_06_puresky_4k.hdr', (hdrmap) => {
 
 const gltfloader = new GLTFLoader();
 let model;
-gltfloader.load('/code/poster/models/heart.glb', (gltf) => {
+gltfloader.load('Poster/models/heart.glb', (gltf) => {
     model = gltf.scene;
     const glassmaterial = new THREE.MeshPhysicalMaterial({
     color:0xffffff,
