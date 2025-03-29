@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import * as CANNON from 'cannon'; // npm install three cannon
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'GLTFLoader';
 
 // Масштабный коэффициент
 const scale = 0.02; // 1 единица сцены = 50 пикселей (1 / scale = 50)

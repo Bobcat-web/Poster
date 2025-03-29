@@ -1,10 +1,10 @@
 import * as THREE from 'three';
-import { Line2 } from 'three/examples/jsm/lines/Line2.js';
-import { LineGeometry } from 'three/examples/jsm/lines/LineGeometry.js';
-import { LineMaterial } from 'three/examples/jsm/lines/LineMaterial.js';
-import {GLTFLoader} from "three/addons/loaders/GLTFLoader.js";
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+import { Line2 } from 'Line2';
+import { LineGeometry } from 'LineGeometry';
+import { LineMaterial } from 'LineMaterial';
+import {GLTFLoader} from "GLTFLoader";
+import { FontLoader } from 'FontLoader';
+import { TextGeometry } from 'TextGeometry';
 
 // Создание сцены
 const scene = new THREE.Scene();
